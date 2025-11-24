@@ -1,0 +1,44 @@
+
+> my-portfolio@0.1.0 lint
+> eslint
+
+
+/home/tejas/Desktop/Portfolio/my-portfolio/app/components/DistortedText.tsx
+   84:23  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   85:29  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   96:28  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   97:34  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+   98:28  error    Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  133:15  warning  'state' is defined but never used         @typescript-eslint/no-unused-vars
+
+/home/tejas/Desktop/Portfolio/my-portfolio/app/components/hero/RingModel.tsx
+  80:15  warning  'state' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/tejas/Desktop/Portfolio/my-portfolio/app/components/hero/RingScene.tsx
+  5:26  warning  'useEffect' is defined but never used  @typescript-eslint/no-unused-vars
+  5:37  warning  'useState' is defined but never used   @typescript-eslint/no-unused-vars
+
+/home/tejas/Desktop/Portfolio/my-portfolio/app/components/hero/hero.tsx
+    2:39  warning  'memo' is defined but never used                       @typescript-eslint/no-unused-vars
+    6:10  warning  'SplitText' is defined but never used                  @typescript-eslint/no-unused-vars
+  153:11  warning  'handleImageHover' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  168:11  warning  'handleImageLeave' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+/home/tejas/Desktop/Portfolio/my-portfolio/app/work/BoxModel.tsx
+  81:15  warning  'state' is defined but never used  @typescript-eslint/no-unused-vars
+
+/home/tejas/Desktop/Portfolio/my-portfolio/app/work/BoxScene.tsx
+  5:26  warning  'useEffect' is defined but never used  @typescript-eslint/no-unused-vars
+  5:37  warning  'useState' is defined but never used   @typescript-eslint/no-unused-vars
+
+/home/tejas/Desktop/Portfolio/my-portfolio/app/work/page.tsx
+    2:28  warning  'useEffect' is defined but never used                                                                                                                                                                                                                                                    @typescript-eslint/no-unused-vars
+   87:11  warning  'cursorInnerRef' is assigned a value but never used                                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+   89:24  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+   90:24  error    Unexpected any. Specify a different type                                                                                                                                                                                                                                                 @typescript-eslint/no-explicit-any
+   91:11  warning  'xPrev' is assigned a value but never used                                                                                                                                                                                                                                               @typescript-eslint/no-unused-vars
+  173:29  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  234:45  warning  'index' is defined but never used                                                                                                                                                                                                                                                        @typescript-eslint/no-unused-vars
+
+✖ 23 problems (7 errors, 16 warnings)
+

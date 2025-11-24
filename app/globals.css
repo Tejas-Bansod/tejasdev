@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+/* Lato Font Family */
+@font-face {
+    font-family: 'Lato';
+    src: url('/Fonts/Lato/Lato-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* JetBrains Mono Font Family */
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('/Fonts/JetBrains_Mono/static/JetBrainsMono-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Marcellus Font Family */
+@font-face {
+    font-family: 'Marcellus';
+    src: url('/Fonts/Marcellus/Marcellus-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Merriweather Font Family */
+@font-face {
+    font-family: 'Merriweather';
+    src: url('/Fonts/Merriweather/static/Merriweather_120pt-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lugrasimo';
+    src: url('/Fonts/Lugrasimo/Lugrasimo-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Global styles */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    --text-colour: #262626;
+    --Background-colour: #f5f5f5;
+    --font-sans: 'Lato', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-serif: 'Merriweather', serif;
+    --font-display: 'Marcellus', serif;
+    --font-lugrasimo: 'Lugrasimo', serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--Background-colour);
+    color: var(--text-colour);
+    line-height: 1.5;
+}
+
+.preloader {
+    background-color: var(--Background-colour);
+    color: var(--text-colour);
+    line-height: 1.5;
+}
+
+/* Hide Scrollbar */
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: none;
+}
+
+/* For IE and Edge Legacy */
+body {
+    -ms-overflow-style: none;
+}
+
+/* Utility classes for fonts */
+.font-mono {
+    font-family: var(--font-mono);
+}
+
+.font-serif {
+    font-family: var(--font-serif);
+}
+
+.font-display {
+    font-family: var(--font-display);
+}
+
+.font-lugrasimo {
+    font-family: var(--font-lugrasimo);
+}
+
+.logo {
+    font-family: var(--font-lugrasimo);
+    font-size: 2rem;
+}
+
+/* Custom Cursor */
+/* html.has-custom-cursor {
+    cursor: none;
+}
+
+html.has-custom-cursor * {
+    cursor: none !important;
+} */
+
+/* Text Selection Color */
+::selection {
+    background-color: #262626;
+    color: #f5f5f5;
+}
+
+::-moz-selection {
+    background-color: #262626;
+    color: #f5f5f5;
 }
