@@ -3,14 +3,16 @@ import { useRef, useEffect, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import Link from 'next/link';
-import { X, ArrowUpRight, Mail, Github, Linkedin, Twitter } from 'lucide-react';
+import { X, ArrowUpRight, Mail, Github, Linkedin, Instagram } from 'lucide-react';
+import { useTransition } from '../../context/TransitionContext';
+import { usePathname } from 'next/navigation';
 
 interface MenuOverlayProps {
     isOpen: boolean;
     setIsOpen: (isOpen: boolean) => void;
 }
 
-const menuLinks = [
+export const menuLinks = [
     { label: 'HOME', href: '/', index: '01' },
     { label: 'WORK', href: '/work', index: '02' },
     { label: 'ABOUT', href: '/about', index: '03' },
@@ -18,10 +20,10 @@ const menuLinks = [
 ];
 
 const socialLinks = [
-    { icon: Mail, href: 'mailto:your@email.com', label: 'Email' },
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
+    { icon: Mail, href: 'mailto:tejas.bansod.work@gmail.com', label: 'Email' },
+    { icon: Github, href: 'https://github.com/Tejas-Bansod', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/tejas-bansod-profile/', label: 'LinkedIn' },
+    { icon: Instagram, href: 'https://www.instagram.com/itstejasbansod', label: 'Instagram' },
 ];
 
 export default function MenuOverlay({ isOpen, setIsOpen }: MenuOverlayProps) {
@@ -152,6 +154,25 @@ export default function MenuOverlay({ isOpen, setIsOpen }: MenuOverlayProps) {
         });
     }, [mousePosition, isOpen]);
 
+    const { initiateTransition } = useTransition();
+    const pathname = usePathname(); // Import this from 'next/navigation'
+
+    const handleLinkClick = (e: React.MouseEvent, href: string) => {
+        e.preventDefault();
+        if (pathname === href) {
+            setIsOpen(false);
+            return;
+        }
+
+        setIsOpen(false);
+
+        // Wait for the menu closing animation (approx 1.5s) before starting the page transition
+        // We can adjust this timing if it feels too slow
+        setTimeout(() => {
+            initiateTransition(href);
+        }, 1000); // 1s delay - overlapping slightly with the end of the menu close for smoother feel
+    };
+
     return (
         <div
             ref={containerRef}
@@ -216,10 +237,10 @@ export default function MenuOverlay({ isOpen, setIsOpen }: MenuOverlayProps) {
                         className="overflow-hidden relative group"
                         style={{ height: 'auto', minHeight: '1.2em' }}
                     >
-                        <Link
+                        <a
                             href={link.href}
                             className="menu-link-item flex items-center gap-3 md:gap-6 text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold transition-colors"
-                            onClick={() => setIsOpen(false)}
+                            onClick={(e) => handleLinkClick(e, link.href)}
                             style={{
                                 position: 'relative',
                                 cursor: 'pointer',
@@ -285,7 +306,7 @@ export default function MenuOverlay({ isOpen, setIsOpen }: MenuOverlayProps) {
                             <ArrowUpRight
                                 className="menu-arrow cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity w-6 h-6 md:w-10 md:h-10"
                             />
-                        </Link>
+                        </a>
                     </div>
                 ))}
             </nav>

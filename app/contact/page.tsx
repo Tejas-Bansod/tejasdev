@@ -2,7 +2,10 @@
 import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Header from '../components/header/header';
+
+gsap.registerPlugin(ScrollTrigger);
 import { Mail, Github, Linkedin, ArrowUpRight, Send, Instagram } from 'lucide-react';
 
 const socialLinks = [
@@ -71,7 +74,60 @@ export default function ContactPage() {
                 duration: 0.8,
                 stagger: 0.1,
                 ease: "power3.out"
-            }, "-=0.6");
+            }, "-=0.6")
+            .to('.hero-images', {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                ease: "power3.out"
+            }, "-=0.8");
+
+        // Parallax Effect for Images
+        // We animate the columns in opposite directions or at different speeds
+        gsap.to('.parallax-col-1', {
+            y: -50,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.hero-images',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1
+            }
+        });
+
+        gsap.to('.parallax-col-2', {
+            y: 50,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.hero-images',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1
+            }
+        });
+
+        // Internal Image Parallax
+        // Scale up images and move them vertically within their containers
+        const images = gsap.utils.toArray<HTMLImageElement>('.hero-images img');
+
+        images.forEach((img) => {
+            gsap.fromTo(img,
+                {
+                    scale: 1.2,
+                    yPercent: -15
+                },
+                {
+                    yPercent: 15,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: img.parentElement, // Use the wrapper div as trigger
+                        start: 'top bottom',
+                        end: 'bottom top',
+                        scrub: true
+                    }
+                }
+            );
+        });
 
         // Floating animation for decorative elements
         gsap.to('.float-element', {
@@ -135,21 +191,64 @@ export default function ContactPage() {
 
                 {/* Hero Section */}
                 <section className="mb-32 md:mb-40">
-                    <div className="overflow-hidden mb-8">
-                        <p className="hero-line text-sm uppercase tracking-[0.3em] opacity-40 font-mono">
-                            Get in touch
-                        </p>
-                    </div>
-                    <div className="overflow-hidden">
-                        <h1 className="hero-line text-[12vw] md:text-[8vw] lg:text-[7vw] leading-[0.95] font-bold tracking-tight mb-8">
-                            Let's work<br />together
-                        </h1>
-                    </div>
-                    <div className="overflow-hidden max-w-2xl">
-                        <p className="hero-line text-xl md:text-2xl leading-relaxed opacity-70">
-                            Have a project in mind or just want to chat?
-                            I'm always open to discussing new opportunities and creative ideas.
-                        </p>
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        {/* Left Side - Text */}
+                        <div>
+                            <div className="overflow-hidden mb-8">
+                                <p className="hero-line text-sm uppercase tracking-[0.3em] opacity-40 font-mono">
+                                    Get in touch
+                                </p>
+                            </div>
+                            <div className="overflow-hidden">
+                                <h1 className="hero-line text-[12vw] md:text-[8vw] lg:text-[7vw] leading-[0.95] font-bold tracking-tight mb-8">
+                                    Let's work<br />together
+                                </h1>
+                            </div>
+                            <div className="overflow-hidden max-w-2xl">
+                                <p className="hero-line text-xl md:text-2xl leading-relaxed opacity-70">
+                                    Have a project in mind or just want to chat?
+                                    I'm always open to discussing new opportunities and creative ideas.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Right Side - Images */}
+                        <div className="hero-images opacity-0 translate-y-10 w-full max-w-4xl mx-auto lg:ml-auto lg:mr-0">
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="parallax-col-1 space-y-4 mt-8 md:mt-0">
+                                    <div className="relative aspect-square w-full overflow-hidden rounded-2xl">
+                                        <img
+                                            src="/images/flowers.jpg"
+                                            alt="Flowers"
+                                            className="object-cover w-full h-full"
+                                        />
+                                    </div>
+                                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                                        <img
+                                            src="/images/car.jpg"
+                                            alt="car"
+                                            className="object-cover w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="parallax-col-2 space-y-4">
+                                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+                                        <img
+                                            src="/images/truck.jpg"
+                                            alt="truck"
+                                            className="object-cover w-full h-full"
+                                        />
+                                    </div>
+                                    <div className="relative aspect-square w-full overflow-hidden rounded-2xl">
+                                        <img
+                                            src="/images/flowerpot.jpg"
+                                            alt="flowerpot"
+                                            className="object-cover w-full h-full"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
@@ -189,10 +288,10 @@ export default function ContactPage() {
                             <h3 className="font-bold mb-4">Response Time</h3>
                             <p className="opacity-60">Usually within 24 hours</p>
                         </div>
-                    </div>
+                    </div >
 
                     {/* Right Column - Contact Form */}
-                    <div className="md:col-span-7">
+                    < div className="md:col-span-7" >
                         <h2 className="text-2xl font-bold mb-8">Send a message</h2>
 
                         <form onSubmit={handleSubmit} className="space-y-8">
@@ -291,11 +390,11 @@ export default function ContactPage() {
                         <p className="mt-12 text-sm opacity-40 italic">
                             * I respect your privacy. Your information will never be shared with third parties.
                         </p>
-                    </div>
-                </div>
+                    </div >
+                </div >
 
                 {/* Bottom CTA */}
-                <section className="mt-40 md:mt-56 border-t border-black/10 pt-16">
+                < section className="mt-40 md:mt-56 border-t border-black/10 pt-16" >
                     <div className="text-center">
                         <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 max-w-3xl mx-auto leading-tight">
                             Ready to bring your ideas to life?
@@ -304,9 +403,9 @@ export default function ContactPage() {
                             Let's create something amazing together. Drop me a message and let's get started.
                         </p>
                     </div>
-                </section>
+                </section >
 
-            </main>
-        </div>
+            </main >
+        </div >
     );
 }

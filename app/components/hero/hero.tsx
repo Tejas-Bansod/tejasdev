@@ -246,23 +246,6 @@ export default function Hero() {
                     </div>
                 </div>
 
-                {/* Scroll indicator */}
-                <div className="absolute bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2">
-                    <div className="flex flex-col items-center gap-2 opacity-30 hover:opacity-100 transition-opacity cursor-pointer">
-                        <span className="text-xs uppercase tracking-[0.3em] text-black dark:text-white font-light">
-                            Scroll
-                        </span>
-                        <div className="w-px h-12 bg-linear-to-b from-black/50 to-transparent dark:from-white/50 animate-pulse" />
-                    </div>
-                </div>
-
-                <style jsx>{`
-                    @keyframes float {
-                        0%, 100% { transform: translateY(0px); }
-                        50% { transform: translateY(-10px); }
-                    }
-                `}</style>
-
                 {/* Bottom Art & Text */}
                 <div className="absolute bottom-0 left-0 w-full z-10 pointer-events-none mix-blend-difference text-black dark:text-white">
                     {/* Corner Details */}

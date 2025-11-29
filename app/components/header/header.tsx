@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
-import TextHoverUPEffectLeft from "../Effects/TextHoverUpEffect/TextHoverUPEffectLeft";
+import TextHoverUPEffectLeft from "../TextHoverUpEffect/TextHoverUPEffectLeft";
 import MenuOverlay from "./MenuOverlay";
-import Link from 'next/link';
+import TransitionLink from '../ui/TransitionLink';
 
 export default function Header({ className }: { className?: string }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,9 +25,9 @@ export default function Header({ className }: { className?: string }) {
 
             {/* Mobile Layout - Menu on Right */}
             <div className="flex md:hidden justify-between items-center py-6 px-6">
-                <Link href="/" className="logo text-2xl font-bold">
+                <TransitionLink href="/" className="logo text-2xl font-bold">
                     Tejas.
-                </Link>
+                </TransitionLink>
                 <div
                     className="Menu cursor-pointer"
                     onClick={() => setIsMenuOpen(true)}
@@ -39,9 +39,9 @@ export default function Header({ className }: { className?: string }) {
             {/* Desktop Layout - Menu in Center */}
             <div className="hidden md:grid grid-cols-3 items-center py-6 px-12 lg:px-24">
                 {/* Left - Logo */}
-                <Link href="/" className="logo text-2xl font-bold">
+                <TransitionLink href="/" className="logo text-2xl font-bold">
                     Tejas.
-                </Link>
+                </TransitionLink>
 
                 {/* Center - Menu Button */}
                 <div
@@ -53,9 +53,9 @@ export default function Header({ className }: { className?: string }) {
 
                 {/* Right - Get in Touch */}
                 <div className="flex justify-end">
-                    <Link href="/contact" className="hover:text-accent text-xl  transition-colors duration-300">
+                    <TransitionLink href="/contact" className="hover:text-accent text-xl  transition-colors duration-300">
                         Get in Touch ⟶
-                    </Link>
+                    </TransitionLink>
                 </div>
             </div>
         </header>

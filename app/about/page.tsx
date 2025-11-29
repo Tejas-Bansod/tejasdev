@@ -7,6 +7,7 @@ import Header from '../components/header/header';
 import { ArrowUpRight } from 'lucide-react';
 import DimondScene from './DimondScene';
 import Link from 'next/link';
+import TransitionLink from '../components/ui/TransitionLink';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -311,13 +312,13 @@ export default function AboutPage() {
                                 </p>
                             </div>
                             <div>
-                                <Link
+                                <TransitionLink
                                     href="/contact"
                                     className="group inline-flex items-center gap-3 text-xl font-medium border-b-2 border-black pb-1 hover:gap-5 transition-all duration-300"
                                 >
                                     Get in touch
                                     <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                                </Link>
+                                </TransitionLink>
                             </div>
                         </div>
                     </div>
