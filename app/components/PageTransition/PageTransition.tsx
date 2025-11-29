@@ -35,6 +35,7 @@ export default function PageTransition() {
                 duration: 0.8,
                 stagger: 0.1,
                 ease: 'power4.inOut',
+                delay: 0.5
             });
         };
 

@@ -229,21 +229,7 @@ export default function Hero() {
                         </div>
                     </div>
 
-                    {/* Floating badges */}
-                    <div className="flex flex-wrap justify-center gap-3 md:gap-4 mt-12 md:mt-16">
-                        {['Available for Work', 'Based in India', 'Open Source'].map((text, i) => (
-                            <div
-                                key={i}
-                                className="px-4 md:px-6 py-2 md:py-3 rounded-full border border-black/10 dark:border-white/20 text-xs md:text-base text-black/60 dark:text-white/60 hover:border-black/30 dark:hover:border-white/40 hover:text-black dark:hover:text-white transition-all duration-300 cursor-pointer backdrop-blur-sm"
-                                style={{
-                                    animation: `float ${3 + i * 0.5}s ease-in-out infinite`,
-                                    animationDelay: `${i * 0.2}s`,
-                                }}
-                            >
-                                {text}
-                            </div>
-                        ))}
-                    </div>
+                    
                 </div>
 
                 {/* Bottom Art & Text */}
